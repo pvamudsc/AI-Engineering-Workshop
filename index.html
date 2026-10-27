@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purple Panther - Campus AI Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="chat-container">
+    <!-- Header -->
+    <header class="chat-header">
+      <div class="brand">
+        <div class="brand-avatar">🐾</div>
+        <div class="brand-info">
+          <h1>Purple Panther</h1>
+          <p class="brand-subtitle">Campus AI Assistant</p>
+        </div>
+      </div>
+      
+      <!-- API Key Setting -->
+      <div class="api-key-panel">
+        <input 
+          type="password" 
+          id="api-key-input" 
+          placeholder="Paste Gemini API Key..." 
+          title="Gemini API Key"
+        />
+        <button id="save-key-btn" type="button">Save Key</button>
+      </div>
+    </header>
+
+    <!-- Message History Area -->
+    <main class="chat-messages" id="chat-messages">
+      <!-- Messages will be dynamically rendered here -->
+    </main>
+
+    <!-- Input Footer -->
+    <footer class="chat-footer">
+      <form id="chat-form">
+        <input 
+          type="text" 
+          id="user-input" 
+          placeholder="Ask Purple Panther about campus resources, policies, tutoring..." 
+          autocomplete="off" 
+          required 
+        />
+        <button type="submit" id="send-btn" aria-label="Send Message">
+          <span>Send</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
