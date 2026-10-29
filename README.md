@@ -11,7 +11,7 @@ Powered directly in the browser by Google's **Gemini API** (`gemini-3.6-flash`),
 - **Institution:** **Prairie View A&M University (PVAMU)** — Roy G. Perry College of Engineering.
 - **Current Academic Terms:** Fall 2026 Semester & Spring 2027 Registration.
 - **Student Profile:** **Daniel Sian** (`PV-839201`), 1st semester graduate student in **M.S. in Data Science & Engineering (MS DSE)**.
-  - **Academic Advisor:** Dr. Lijun Qian (NENR Building, Room 332).
+  - **Academic Advisor:** Dr. Lijun Qian (Electrical Engineering Building).
   - **Enrolled Courses:** `ELEG 6316` (Statistical Learning for Big Data), `COMP 5314` (Advanced Database Management Systems), and `GNEG 5304` (Engineering Probability and Statistics).
 - **Personality:** Warm, collegiate, and encouraging campus assistant named **Purple Panther**.
 
@@ -81,15 +81,23 @@ All ground truth data is cleanly maintained in **[`mockData.js`](mockData.js)** 
 
 - **Fall 2026 Academic Calendar (16-Week Session):** First class day (Aug 24), Census drop date (Sept 9), 20th class day & major change deadline (Sept 21), Spring 2027 priority registration (Nov 2–7), Thanksgiving holiday (Nov 26–27), Last class day (Nov 30), Final exams (Dec 2–9), Graduate Commencement (Dec 10), Undergraduate Commencement (Dec 11).
 - **Spring 2027 Academic Calendar (16-Week Session):** First class day (Jan 11), MLK Jr. Day (Jan 18), Census drop date (Jan 27), Midterms (March 4–6), Spring Break (March 15–20), Honors Convocation (March 17), Final exams (April 29–May 6), Graduate Commencement (May 7), Undergraduate Commencement (May 8).
-- **MS in Data Science & Engineering (MS DSE):** 30 SCH curriculum, coordinator Dr. Lijun Qian (NENR 332), core courses `ELEG 6316`, `COMP 5314`, `GNEG 5304`, `ELEG 6318`, `COMP 5315`.
+- **MS in Data Science & Engineering (MS DSE):** 30 SCH curriculum, coordinator Dr. Lijun Qian (Electrical Engineering Building), core courses `ELEG 6316`, `COMP 5314`, `GNEG 5304`, `ELEG 6318`, `COMP 5315`.
 - **Undergraduate CS & CPEG:** ABET-accredited curriculum, course sequences (`COMP 1336` through `COMP 4314`, `CPEG 2302`–`4303`), and senior design capstones.
-- **Dining on the Hill:** 
-  - **MSC Dining Facility:** All-you-care-to-eat cafeteria open daily until **7:00 PM** (Dinner 4:00 PM – 7:00 PM).
-  - **Chick-fil-A:** Located inside the **Memorial Student Center (MSC)**.
-  - **Dunkin':** Located on the 1st floor of the **John B. Coleman Library**.
-  - **Pizza Hut Express:** Located inside **The Strike Zone** (campus bowling alley & student lounge).
-  - Grubhub mobile pick-up integrated across campus.
-- **John B. Coleman Library:** 5 floors of study spaces, group study rooms 201–218, technology/laptop lending desk, 24/7 hours during finals.
+- **PVAMU Dining System on the Hill:** 
+  - **Meal Swipes:** Accepted ONLY at **MSC Dining Facility**, **The Zone** (resident dining hall), and **Strike Zone Grill**. Daniel Sian has 7 Meal Swipes per week on his plan.
+  - **Panther Bucks:** Declining balance used for retail venues: **Chick-fil-A** (in the MSC), **Pizza Hut Express** (in The Strike Zone bowling alley), **Dunkin'** (inside the library), and **Panther Wok**.
+  - **Dining Hours:**
+    - **MSC Dining Facility:** Mon–Fri dinner closes at **7:00 PM**; Saturday & Sunday dinner closes at **6:00 PM**.
+    - **Strike Zone Grill:** Open daily until **9:30 PM** (accepts Meal Swipes & Panther Bucks).
+    - **Panther Wok:** Located near the Strike Zone; stays open until 11:00 PM when operating, but is **currently closed**.
+    - **Chick-fil-A (MSC):** Mon–Thu 9:00 AM–9:00 PM, Fri 9:00 AM–8:00 PM, Sat 11:00 AM–4:00 PM, Closed Sunday.
+    - **Dunkin' (Library 1st floor):** Mon–Thu 8:00 AM–7:00 PM, Fri 8:00 AM–3:00 PM.
+    - **Pizza Hut Express (Strike Zone):** Mon–Thu 11:00 AM–9:00 PM, Fri 11:00 AM–8:00 PM.
+    - Grubhub mobile pick-up integrated across campus.
+- **John B. Coleman Library:**
+  - **Operating Hours:** Monday–Friday: 7:00 AM – 12:00 AM (Midnight); Saturday: 12:00 PM – 6:00 PM; Sunday: 6:00 PM – 12:00 AM (Midnight).
+  - **No 24-Hour Extension:** Standard operating hours remain throughout midterms and finals.
+  - 5 floors of study zones, group study rooms 201–218, technology/laptop lending desk, and 1st floor Dunkin'.
 - **Panther Express Shuttle & Owens-Franklin Health Center:** Campus transit Route A connecting student housing, MSC, and engineering complexes; walk-in medical clinic and counseling services.
 
 ---

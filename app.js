@@ -290,7 +290,7 @@ function computeSemanticVectorSearch(query) {
     if (/fall|2026|august|september|october|november|december|census|drop|withdraw|add|tuition|labor\s*day|thanksgiving|finals|calendar|deadline/i.test(query) && doc.id === "doc-01") score += 0.45;
     if (/dse|data\s*science|msdse|graduate|master|lijun|qian|machine\s*learning|ai|eleg\s*6316/i.test(query) && doc.id === "doc-02") score += 0.45;
     if (/undergraduate|bachelor|cpsc|cpeg|computer\s*science|comp\s*1336|comp\s*2336|data\s*structures/i.test(query) && doc.id === "doc-03") score += 0.45;
-    if (/food|eat|hungry|grub|dining|chick-fil-a|msc|dunkin|pizza\s*hut|strike\s*zone|bowling|meal|late\s*night|coffee|sodexo/i.test(query) && doc.id === "doc-04") score += 0.45;
+    if (/food|eat|hungry|grub|dining|chick-fil-a|msc|dunkin|pizza\s*hut|strike\s*zone|bowling|wok|panther\s*wok|the\s*zone|grill|meal\s*swipes?|panther\s*bucks?|meal|late\s*night|coffee|sodexo/i.test(query) && doc.id === "doc-04") score += 0.45;
     if (/study|library|coleman|room|quiet|laptop|book|reserve/i.test(query) && doc.id === "doc-05") score += 0.45;
     if (/bus|shuttle|panther\s*express|transit|route|health|clinic|doctor|owens|counseling/i.test(query) && doc.id === "doc-06") score += 0.45;
     if (/spring|2027|january|february|march|april|may|mlk|spring\s*break|honors\s*convocation|priority\s*registration/i.test(query) && doc.id === "doc-07") score += 0.45;
@@ -371,8 +371,8 @@ chatForm.addEventListener("submit", async (e) => {
       `Academic Advisor: ${p.academicAdvisor}\n` +
       `Enrolled Fall 2026 Courses: ${p.currentSemesterCourses.map(c => `${c.code}: ${c.name} (${c.credits} SCH, Instructor: ${c.instructor})`).join("; ")}\n` +
       `Housing: ${p.campusHousing}\n` +
-      `Dining Preference: ${p.dietaryPreference}\n` +
-      `Instruction: Address Daniel warmly, acknowledge his graduate program (MS in Data Science and Engineering), and reference his Fall 2026 courses or advisor where relevant.`;
+      `Meal Plan & Campus Funds: ${p.mealPlan}\n` +
+      `Instruction: Address Daniel warmly, acknowledge his graduate program (MS in Data Science and Engineering), and reference his Fall 2026 courses, advisor Dr. Lijun Qian (Electrical Engineering Building), or meal swipes / Panther Bucks where relevant.`;
 
     logTraceStep("🧠 Memory Injection", PPU_MOCK_DATA.mockStudentProfile);
   }
@@ -638,9 +638,12 @@ function detectAndExecuteMockTool(prompt) {
   const lower = prompt.toLowerCase();
 
   // Facility Status tool
-  if (/recreation|gym|fitness|msc|dining|chick-fil-a|chick|library|coleman|clinic|health|owens|strike|bowling/i.test(lower) && /open|hours|crowd|status|busy/i.test(lower)) {
+  if (/recreation|gym|fitness|msc|dining|chick-fil-a|chick|library|coleman|clinic|health|owens|strike|bowling|wok|zone|grill/i.test(lower) && /open|hours|crowd|status|busy|closed|meal/i.test(lower)) {
     let facility = "recreation_center";
-    if (/chick/i.test(lower)) facility = "chick_fil_a";
+    if (/panther\s*wok|wok/i.test(lower)) facility = "panther_wok";
+    else if (/strike\s*zone\s*grill|grill/i.test(lower)) facility = "strike_zone_grill";
+    else if (/the\s*zone/i.test(lower)) facility = "the_zone";
+    else if (/chick/i.test(lower)) facility = "chick_fil_a";
     else if (/dining|msc/i.test(lower)) facility = "msc_dining";
     else if (/library|coleman/i.test(lower)) facility = "library";
     else if (/clinic|health|owens/i.test(lower)) facility = "health_center";
@@ -702,7 +705,7 @@ function queryMockMcpServers(prompt) {
   }
 
   // Dining Balance MCP Server
-  if (/meal\s*plan|dining\s*dollar|balance|food\s*money|panther\s*point/i.test(lower)) {
+  if (/meal\s*plan|meal\s*swipe|panther\s*buck|dining\s*dollar|balance|food\s*money|panther\s*point/i.test(lower)) {
     const server = PPU_MOCK_DATA.mcpServers.find(s => s.name === "mcp://pvamu-dining-services");
     if (server) {
       results.push({
@@ -748,6 +751,47 @@ function appendAssistantGreeting() {
   appendMessage("assistant", msg);
 }
 
+function formatMarkdown(text) {
+  if (!text) return "";
+
+  // 1. Escape HTML entities
+  let html = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  // 2. Code blocks (```lang ... ```)
+  html = html.replace(/```(?:[a-zA-Z]*\n)?([\s\S]*?)```/g, "<pre><code>$1</code></pre>");
+
+  // 3. Inline code (`code`)
+  html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
+
+  // 4. Bold (**text**)
+  html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+
+  // 5. Italic (*text*)
+  html = html.replace(/(^|[^*])\*([^*]+)\*([^*]|$)/g, "$1<em>$2</em>$3");
+
+  // 6. Headings (###, ##, #)
+  html = html.replace(/^### (.*$)/gim, "<h4 class='md-h4'>$1</h4>");
+  html = html.replace(/^## (.*$)/gim, "<h3 class='md-h3'>$1</h3>");
+  html = html.replace(/^# (.*$)/gim, "<h2 class='md-h2'>$1</h2>");
+
+  // 7. Bullet lists: convert lines starting with •, -, or *
+  html = html.replace(/^[•\-\*]\s+(.*$)/gim, "<li>$1</li>");
+  html = html.replace(/(<li>[\s\S]*?<\/li>(?:\s*<li>[\s\S]*?<\/li>)*)/gim, '<ul class="md-list">$1</ul>');
+
+  // 8. Line breaks
+  html = html.replace(/\n\n+/g, "<br><br>");
+  html = html.replace(/\n/g, "<br>");
+
+  // Clean up superfluous breaks around blocks
+  html = html.replace(/<br><(ul|ol|h2|h3|h4|pre)/g, "<$1");
+  html = html.replace(/<\/(ul|ol|h2|h3|h4|pre)><br>/g, "</$1>");
+
+  return html;
+}
+
 function appendMessage(sender, text, isError = false) {
   const row = document.createElement("div");
   row.className = `message-row ${sender}`;
@@ -761,7 +805,7 @@ function appendMessage(sender, text, isError = false) {
 
   const bubble = document.createElement("div");
   bubble.className = `message-bubble ${isError ? "error" : ""}`;
-  bubble.textContent = text;
+  bubble.innerHTML = formatMarkdown(text);
 
   content.appendChild(bubble);
   row.appendChild(avatar);
@@ -794,7 +838,7 @@ function appendAssistantMessageContainer() {
 function renderPlainBubble(container, text) {
   const bubble = document.createElement("div");
   bubble.className = "message-bubble";
-  bubble.textContent = text;
+  bubble.innerHTML = formatMarkdown(text);
   container.appendChild(bubble);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }

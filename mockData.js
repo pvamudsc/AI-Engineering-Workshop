@@ -60,8 +60,8 @@ const PPU_MOCK_DATA = {
         "The program provides advanced study in artificial intelligence, machine learning, data analytics, and cloud computing for big data. " +
         "Key foundational and core courses include: ELEG 6316 (Statistical Learning for Big Data), ELEG 6318 (Deep Learning), ELEG 6360 (Modern Artificial Intelligence), " +
         "COMP 5314 (Advanced Database Management Systems), COMP 5315 (Design & Analysis of Algorithms), and COMP 5327 (Data Mining). " +
-        "Program Coordinator: Dr. Lijun Qian. Office: NENR Building Room 332, Phone: (936) 261-9908, Email: LiQian@pvamu.edu.",
-      keywords: ["msdse", "data science", "engineering", "graduate", "master of science", "lijun qian", "nenr", "machine learning", "deep learning", "big data", "eleg 6316", "comp 5314", "artificial intelligence", "curriculum", "degree requirements", "30 sch"]
+        "Program Coordinator: Dr. Lijun Qian. Office: Electrical Engineering Building, Phone: (936) 261-9908, Email: LiQian@pvamu.edu.",
+      keywords: ["msdse", "data science", "engineering", "graduate", "master of science", "lijun qian", "electrical engineering building", "machine learning", "deep learning", "big data", "eleg 6316", "comp 5314", "artificial intelligence", "curriculum", "degree requirements", "30 sch"]
     },
     {
       id: "doc-03",
@@ -78,33 +78,38 @@ const PPU_MOCK_DATA = {
     },
     {
       id: "doc-04",
-      title: "PVAMU Campus Dining on the Hill (Sodexo Locations & Hours)",
+      title: "PVAMU Campus Dining System & Retail Locations on the Hill",
       category: "Campus Dining",
       content: 
-        "PVAMU Dining on the Hill, managed by Sodexo, provides resident and retail dining across campus. " +
-        "1. MSC Dining Facility (Memorial Student Center): All-you-care-to-eat resident dining hall, open daily until 7:00 PM. " +
-        "Mon–Thu: Breakfast 7:00 AM–10:00 AM, Lunch 11:00 AM–2:00 PM, Dinner 4:00 PM–7:00 PM. " +
-        "Fri: Breakfast 7:00 AM–10:00 AM, Lunch 11:00 AM–2:00 PM, Dinner 4:00 PM–7:00 PM. " +
-        "Sat–Sun: Brunch 11:00 AM–1:00 PM, Dinner 4:00 PM–7:00 PM. " +
-        "2. Retail Dining Locations across campus: " +
-        "- Chick-fil-A: Located inside the Memorial Student Center (MSC). Mon–Thu 9:00 AM–9:00 PM, Fri 9:00 AM–8:00 PM, Sat 11:00 AM–4:00 PM, Closed Sunday. " +
-        "- Dunkin': Located inside the John B. Coleman Library (1st floor), serving fresh brewed coffee, espresso, iced drinks, and breakfast bakery items. Mon–Thu 8:00 AM–7:00 PM, Fri 8:00 AM–3:00 PM. " +
-        "- Pizza Hut Express: Located inside The Strike Zone (the campus bowling alley and student entertainment center). Mon–Thu 11:00 AM–9:00 PM, Fri 11:00 AM–8:00 PM. " +
-        "- 1876 Market and The Hill Stop convenience stores for grab-and-go snacks and beverages. " +
-        "Students can place mobile pick-up orders through the Grubhub app linked with their PVAMU ID.",
-      keywords: ["dining", "food", "eat", "msc dining", "chick-fil-a", "msc", "dunkin", "library", "pizza hut", "strike zone", "bowling alley", "sodexo", "grubhub", "meal plan", "panther points", "dining dollars", "hours", "breakfast", "lunch", "dinner", "late night", "coffee"]
+        "The PVAMU Dining System consists of Meal Swipes and Panther Bucks: " +
+        "1. Meal Swipes & Resident Dining Halls: " +
+        "Meal plans come with weekly Meal Swipes that can ONLY be used at three locations: " +
+        "(a) MSC Dining Facility (Memorial Student Center): All-you-care-to-eat resident dining hall. Mon–Fri: Breakfast 7:00 AM–10:00 AM, Lunch 11:00 AM–2:00 PM, Dinner 4:00 PM–7:00 PM (dinner closes at 7:00 PM Mon–Fri). Sat–Sun: Brunch 11:00 AM–1:00 PM, Dinner 4:00 PM–6:00 PM (dinner closes at 6:00 PM on Saturdays and Sundays). " +
+        "(b) The Zone: Another resident dining hall similar to the MSC cafeteria that accepts Meal Swipes. " +
+        "(c) Strike Zone Grill: Located inside The Strike Zone bowling alley, open until 9:30 PM. Accepts Meal Swipes! " +
+        "(Daniel Sian has 7 Meal Swipes per week on his plan). " +
+        "2. Panther Bucks & Retail Dining Venues: " +
+        "Panther Bucks are declining campus funds used to pay for retail dining: " +
+        "• Chick-fil-A: Located inside the Memorial Student Center (MSC). Mon–Thu 9:00 AM–9:00 PM, Fri 9:00 AM–8:00 PM, Sat 11:00 AM–4:00 PM, Closed Sunday. Accepts Panther Bucks and Grubhub mobile orders. " +
+        "• Dunkin': Located on the 1st floor of the John B. Coleman Library, serving coffee, espresso, and bakery items. Mon–Thu 8:00 AM–7:00 PM, Fri 8:00 AM–3:00 PM. Accepts Panther Bucks. " +
+        "• Pizza Hut Express: Located inside The Strike Zone (the campus bowling alley). Mon–Thu 11:00 AM–9:00 PM, Fri 11:00 AM–8:00 PM. Accepts Panther Bucks. " +
+        "• Panther Wok: Located near The Strike Zone. Stays open late until 11:00 PM, but is CURRENTLY CLOSED. Accepts Panther Bucks when operational. " +
+        "• Strike Zone Grill: Also accepts Panther Bucks in addition to Meal Swipes (open until 9:30 PM). " +
+        "• Convenience Stores: 1876 Market and The Hill Stop.",
+      keywords: ["dining", "food", "eat", "meal swipes", "panther bucks", "msc dining", "the zone", "strike zone grill", "panther wok", "chick-fil-a", "msc", "dunkin", "library", "pizza hut", "strike zone", "bowling alley", "hours", "dinner closes at 6", "dinner closes at 7", "sodexo", "grubhub"]
     },
     {
       id: "doc-05",
-      title: "John B. Coleman Library & Academic Study Spaces",
+      title: "John B. Coleman Library Operating Hours & Academic Study Spaces",
       category: "Library & Study Resources",
       content: 
         "The John B. Coleman Library is the intellectual hub of Prairie View A&M University. " +
-        "The library features 5 floors with quiet study zones, computer labs with scientific/engineering software, and private group study rooms (Rooms 201–218). " +
-        "Students can reserve group study rooms online for up to 3 hours per session. " +
+        "Operating Hours: Monday through Friday: 7:00 AM – 12:00 AM (Midnight); Saturday: 12:00 PM – 6:00 PM; Sunday: 6:00 PM – 12:00 AM (Midnight). " +
+        "Please note: There is NO 24-hour extension during midterms and final exam weeks; the library maintains standard operating hours throughout the entire semester. " +
+        "The library features 5 floors with quiet study zones, computer labs, and private group study rooms (Rooms 201–218, reserve online for up to 3 hours). " +
         "Laptops, graphing calculators, and mobile chargers can be checked out at the 1st floor Circulation & Technology Lending Desk. " +
-        "Research consultation is available with subject librarians for engineering and graduate research. Operating hours extend to 24 hours during midterms and final exam weeks.",
-      keywords: ["library", "john b coleman", "study room", "reserve room", "laptop loan", "quiet study", "research", "circulation", "technology lending", "group study", "hours"]
+        "Dunkin' is located on the 1st floor of the library for coffee and refreshments.",
+      keywords: ["library", "john b coleman", "library hours", "study room", "reserve room", "laptop loan", "quiet study", "circulation", "technology lending", "group study", "no 24 hours", "hours"]
     },
     {
       id: "doc-06",
@@ -170,7 +175,7 @@ const PPU_MOCK_DATA = {
     college: "Roy G. Perry College of Engineering",
     institution: "Prairie View A&M University (PVAMU)",
     currentSemester: "Fall 2026 (1st Semester)",
-    academicAdvisor: "Dr. Lijun Qian (NENR Building Room 332)",
+    academicAdvisor: "Dr. Lijun Qian (Electrical Engineering Building)",
     cumulativeGPA: "In Progress (1st Semester Graduate Student)",
     currentSemesterCourses: [
       { code: "ELEG 6316", name: "Statistical Learning for Big Data", credits: 3, section: "P01", instructor: "Dr. Lijun Qian" },
@@ -179,6 +184,7 @@ const PPU_MOCK_DATA = {
     ],
     totalEnrolledCredits: 9,
     campusHousing: "University Village Graduate Housing, Apt 412",
+    mealPlan: "7 Weekly Meal Swipes (for MSC, The Zone, Strike Zone Grill) + Panther Bucks ($286.50)",
     dietaryPreference: "Standard Dining Plan / Chick-fil-A Preferred"
   },
 
@@ -194,7 +200,7 @@ const PPU_MOCK_DATA = {
         properties: {
           facility: {
             type: "STRING",
-            description: "The facility name: 'msc_dining', 'chick_fil_a', 'library', 'recreation_center', or 'health_center'"
+            description: "The facility name: 'msc_dining', 'the_zone', 'strike_zone_grill', 'panther_wok', 'chick_fil_a', 'library', 'recreation_center', or 'health_center'"
           }
         },
         required: ["facility"]
@@ -205,9 +211,12 @@ const PPU_MOCK_DATA = {
         const timestamp = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
         const database = {
-          msc_dining: { name: "MSC Dining Facility (Resident Dining Hall)", status: "OPEN", currentMeal: "Dinner Service (Open until 7:00 PM)", hours: "Daily until 7:00 PM (Breakfast 7-10 AM, Lunch 11 AM-2 PM, Dinner 4-7 PM)", currentCrowd: "60% (Moderate seating available)" },
-          chick_fil_a: { name: "Chick-fil-A (Memorial Student Center - MSC)", status: "OPEN", hours: "Mon-Thu 9:00 AM - 9:00 PM, Fri 9:00 AM - 8:00 PM, Sat 11:00 AM - 4:00 PM", currentCrowd: "45% (Estimated wait: 6 mins)", mobileOrder: "Available via Grubhub" },
-          library: { name: "John B. Coleman Library (Houses Dunkin' on 1st Floor)", status: "OPEN", hours: "Mon-Thu 7:30 AM - 11:00 PM, Fri 7:30 AM - 5:00 PM", currentCrowd: "40%", openStudyRooms: 6 },
+          msc_dining: { name: "MSC Dining Facility (Resident Dining Hall)", status: "OPEN", currentMeal: "Dinner Service (Closes at 7:00 PM Mon-Fri, 6:00 PM Sat-Sun)", hours: "Mon-Fri: 7-10 AM, 11 AM-2 PM, 4-7 PM | Sat-Sun: Brunch 11 AM-1 PM, Dinner 4-6 PM", accepts: "Meal Swipes only", currentCrowd: "60% (Moderate seating available)" },
+          the_zone: { name: "The Zone Dining Hall", status: "OPEN", hours: "Mon-Fri: Lunch 11 AM-2 PM, Dinner 4-7 PM", accepts: "Meal Swipes only", currentCrowd: "45%" },
+          strike_zone_grill: { name: "Strike Zone Grill (The Strike Zone Bowling Alley)", status: "OPEN", hours: "Daily until 9:30 PM", accepts: "Meal Swipes & Panther Bucks", currentCrowd: "55% (Lane traffic active)" },
+          panther_wok: { name: "Panther Wok (Near The Strike Zone)", status: "CLOSED", hours: "Normally open until 11:00 PM, but is CURRENTLY CLOSED", accepts: "Panther Bucks", currentCrowd: "0% (Closed)" },
+          chick_fil_a: { name: "Chick-fil-A (Memorial Student Center - MSC)", status: "OPEN", hours: "Mon-Thu 9:00 AM - 9:00 PM, Fri 9:00 AM - 8:00 PM, Sat 11:00 AM - 4:00 PM", accepts: "Panther Bucks & Credit", currentCrowd: "45% (Estimated wait: 6 mins)", mobileOrder: "Available via Grubhub" },
+          library: { name: "John B. Coleman Library (Houses Dunkin' on 1st Floor)", status: "OPEN", hours: "Mon-Fri 7:00 AM - 12:00 AM (Midnight), Sat 12:00 PM - 6:00 PM, Sun 6:00 PM - 12:00 AM (Midnight) [No 24hr extension during finals]", currentCrowd: "40%", openStudyRooms: 6 },
           recreation_center: { name: "Student Recreation Center", status: "OPEN", hours: "6:00 AM - 11:00 PM", currentCrowd: "35% (Quiet)", openLanes: 3 },
           health_center: { name: "Owens-Franklin Health Center", status: "CLOSED (After Hours)", hours: "Mon-Fri 8:00 AM - 5:00 PM", onCallSupport: "24/7 Nurse Triage available via campus police dispatch" }
         };
@@ -309,11 +318,13 @@ const PPU_MOCK_DATA = {
           mimeType: "application/json",
           data: {
             studentName: "Daniel Sian",
-            planName: "Panther Gold Dining Plan + Dining Dollars",
-            diningDollarsBalance: "$286.50",
-            pantherPointsBalance: 42,
+            planName: "Panther 7 Weekly Meal Plan + Panther Bucks",
+            mealSwipesRemainingThisWeek: 7,
+            mealSwipeLocations: "MSC Dining Facility, The Zone, and Strike Zone Grill ONLY",
+            pantherBucksBalance: "$286.50",
+            pantherBucksAcceptedAt: "Chick-fil-A (MSC), Pizza Hut Express (Strike Zone), Dunkin' (Library), Panther Wok",
             favoriteRetailVenue: "Chick-fil-A (MSC)",
-            recentTransaction: "Grubhub Mobile Order - Chick-fil-A MSC ($11.20) on Oct 27"
+            recentTransaction: "Grubhub Mobile Order - Chick-fil-A MSC ($11.20 Panther Bucks) on Oct 27"
           }
         }
       ]

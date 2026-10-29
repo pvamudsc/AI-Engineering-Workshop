@@ -71,45 +71,47 @@ This guide provides the **exact sequential order** to present and demonstrate th
 - **What Happens:**
   1. The bot answers immediately with PVAMU dining locations:
      - **Chick-fil-A** located in the **Memorial Student Center (MSC)**
-     - **Dunkin'** located on the 1st floor of the **John B. Coleman Library** (coffee, iced drinks, bakery)
-     - **Pizza Hut Express** located inside **The Strike Zone** (campus bowling alley & student lounge)
-     - **MSC Dining Facility** (All-you-care-to-eat cafeteria open until 7:00 PM)
+     - **Dunkin'** located on the 1st floor of the **John B. Coleman Library**
+     - **Pizza Hut Express** located inside **The Strike Zone** bowling alley
+     - **Strike Zone Grill** inside the bowling alley (open until 9:30 PM, accepts Meal Swipes!)
+     - **Panther Wok** near the Strike Zone (stays open until 11:00 PM, currently closed)
+     - **MSC Dining Facility** (Dinner closes at 7:00 PM Mon–Fri, 6:00 PM Sat–Sun)
 - **Inspector Demonstration:**
-  Open **🔍 Inspector**. Highlight the **Vector Embeddings Similarity Search** card. Show how the query scored a high **semantic cosine similarity** match against the PVAMU Dining on the Hill document, even though the query said *"late-night food"* instead of *"Dining on the Hill"*.
+  Open **🔍 Inspector**. Highlight the **Vector Embeddings Similarity Search** card. Show how the query scored a high **semantic cosine similarity** match against the PVAMU Dining System document, even though the query said *"late-night food"* instead of *"Campus Dining System"*.
 
 ---
 
 ## 📍 Step 4: Tool Calling (Live System Actions) (10:00 – 14:00)
 
 - **Setup:** Ask the crowd:
-  > *"Now imagine a student asks: 'Is the MSC dining hall or Chick-fil-A in the MSC open right now?' Can our static knowledge base answer that?"*
-  *(Crowd answers: No! Knowledge bases are static; live operational status and wait times change constantly!)*
+  > *"Now imagine a student asks: 'Is Panther Wok or Strike Zone Grill open right now?' Can our static knowledge base answer that?"*
+  *(Crowd answers: No! Knowledge bases are static; live operational status changes in real time!)*
 - **Action:** Toggle **ON: Tool Calling (Function Execution)**.
 - **Prompt to Send:**
-  > `Is the MSC Dining Facility open right now and what are Chick-fil-A's operating hours in the MSC?`
+  > `Is Panther Wok or Strike Zone Grill open right now, and what are their operating hours?`
 - **What Happens:**
-  1. The model invokes the `get_facility_status("msc_dining")` and `get_facility_status("chick_fil_a")` tools.
+  1. The model invokes `get_facility_status("panther_wok")` and `get_facility_status("strike_zone_grill")`.
   2. An emerald badge appears: `🔧 Tool Calling: get_facility_status() executed`.
-  3. The bot reports real-time live data: MSC Dining open until 7:00 PM, and Chick-fil-A operating hours in the MSC.
+  3. The bot reports real-time live data: Strike Zone Grill is OPEN until 9:30 PM (accepts Meal Swipes), while Panther Wok is CURRENTLY CLOSED.
 - **Second Quick Action Test:**
   Send: `Book study room 204 for 2 hours tomorrow at John B. Coleman Library.`
-  The bot triggers `book_study_room()` and returns a verified booking confirmation code (e.g., `PVAMU-RES-849102`) for the John B. Coleman Library!
+  The bot triggers `book_study_room()` and returns a verified booking confirmation code for the John B. Coleman Library!
 
 ---
 
 ## 📍 Step 5: MCP (Model Context Protocol) (14:00 – 18:00)
 
 - **Talking Point to the Crowd:**
-  > *"Universities have separate enterprise systems: Canvas LMS for assignments, Sodexo / Panther Dining databases for meal balances, and Banner. Custom point-to-point API integrations are brittle. How do we standardize this?"*
+  > *"Universities have separate enterprise systems: Canvas LMS for assignments, Sodexo / Panther Card databases for Meal Swipes and Panther Bucks. Custom point-to-point API integrations are brittle. How do we standardize this?"*
 - **Action:** Toggle **ON: MCP (Model Context Protocol)**.
 - **Prompt to Send:**
-  > `What assignments do I have due this week on Canvas, and what is my Panther Dining Dollars balance?`
+  > `What assignments do I have due this week on Canvas, and how many meal swipes and Panther Bucks do I have left?`
 - **What Happens:**
   1. A blue badge appears: `🔌 MCP: Connected to PVAMU Canvas LMS Connector, PVAMU Dining & Panther Card Hub`.
   2. The assistant returns the student's actual pending graduate assignments:
-     - *ELEG 6316: Big Data Project Proposal*
-     - *COMP 5314: Relational Query Optimization Homework 2*
-     - Exact Panther Dining Dollars balance (*$285.50*) and remaining MSC meal swipes.
+     - *ELEG 6316: Big Data Distributed Regression Lab*
+     - *COMP 5314: Relational Query Optimization Project*
+     - Exact meal plan breakdown: **7 Meal Swipes per week** (accepted at MSC, The Zone, and Strike Zone Grill only) and **$286.50 in Panther Bucks** (accepted at Chick-fil-A, Pizza Hut, Dunkin', and Panther Wok).
 - **Inspector Demonstration:**
   Open **🔍 Inspector** to show the standardized `mcp://pvamu-canvas-lms` and `mcp://pvamu-dining-services` JSON resource payloads.
 
@@ -124,7 +126,7 @@ This guide provides the **exact sequential order** to present and demonstrate th
   > `What degree program am I in, what courses am I enrolled in this semester, and who is my advisor?`
 - **What Happens:**
   1. A purple badge appears: `🧠 Memory: Daniel Sian Profile Injected`.
-  2. Purple Panther greets graduate student **Daniel Sian**, identifies his degree as **M.S. in Data Science and Engineering (MS DSE)** in the Roy G. Perry College of Engineering, names faculty advisor **Dr. Lijun Qian** (NENR 332), and lists Daniel's Fall 2026 courses:
+  2. Purple Panther greets graduate student **Daniel Sian**, identifies his degree as **M.S. in Data Science and Engineering (MS DSE)** in the Roy G. Perry College of Engineering, names faculty advisor **Dr. Lijun Qian** (**Electrical Engineering Building**), and lists Daniel's Fall 2026 courses:
      - *ELEG 6316: Statistical Learning for Big Data*
      - *COMP 5314: Advanced Database Management Systems*
      - *GNEG 5304: Engineering Probability and Statistics*

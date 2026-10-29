@@ -412,8 +412,62 @@ body {
   border-radius: var(--radius-md);
   font-size: 0.94rem;
   line-height: 1.55;
-  white-space: pre-wrap;
   word-break: break-word;
+}
+
+.message-bubble strong {
+  font-weight: 700;
+}
+
+.message-row.assistant .message-bubble strong {
+  color: var(--purple-dark);
+}
+
+.message-bubble em {
+  font-style: italic;
+}
+
+.message-bubble ul.md-list {
+  margin: 6px 0 8px 0;
+  padding-left: 20px;
+}
+
+.message-bubble ul.md-list li {
+  margin-bottom: 3px;
+}
+
+.message-bubble code {
+  background: rgba(76, 29, 149, 0.08);
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88em;
+}
+
+.message-row.user .message-bubble code {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.message-bubble pre {
+  background: #1e1b4b;
+  color: #f8fafc;
+  padding: 10px 14px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 8px 0;
+}
+
+.message-bubble pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.message-bubble h3.md-h3, .message-bubble h4.md-h4 {
+  margin: 10px 0 6px 0;
+  font-weight: 700;
+  color: var(--purple-primary);
 }
 
 .message-row.user .message-bubble {

@@ -50,7 +50,7 @@ Knowledge bases and LLMs are inherently static. They cannot inspect real-time ca
 
 ### 🔬 Technical Implementation
 - **Available Tools:**
-  1. `get_facility_status(facility)`: Returns live operational hours, open/closed status, and crowd capacity percentage for `msc_dining`, `chick_fil_a`, `library`, `recreation_center`, or `health_center`.
+  1. `get_facility_status(facility)`: Returns live operational hours, open/closed status, and crowd capacity percentage for `msc_dining`, `the_zone`, `strike_zone_grill`, `panther_wok`, `chick_fil_a`, `library`, `recreation_center`, or `health_center`.
   2. `check_shuttle_live_eta(route, stop)`: Returns live Panther Express GPS bus tracking and minute estimates for campus stops.
   3. `book_study_room(roomNumber, durationHours)`: Books a study room in the John B. Coleman Library and returns a confirmation code.
 - **UI Feedback:** Renders an emerald execution badge: `🔧 Tool Calling: get_facility_status() executed`.
@@ -60,7 +60,7 @@ Knowledge bases and LLMs are inherently static. They cannot inspect real-time ca
 ## 4. MCP (Model Context Protocol)
 
 ### ⚠️ The Problem
-Universities rely on dozens of disparate enterprise systems—Canvas LMS, Sodexo / Panther Dining databases, registrar systems, and parking services. Building custom, bespoke API integrations for each service is fragile, expensive, and difficult to maintain securely.
+Universities rely on dozens of disparate enterprise systems—Canvas LMS, Sodexo / Panther Card databases, registrar systems, and parking services. Building custom, bespoke API integrations for each service is fragile, expensive, and difficult to maintain securely.
 
 ### ✨ The Upgrade
 Anthropic's open **Model Context Protocol (MCP)** provides a standardized, interoperable protocol for connecting AI models to external data sources and tools using uniform resource URIs (`mcp://...`) and standardized JSON-RPC schemas.
@@ -68,7 +68,7 @@ Anthropic's open **Model Context Protocol (MCP)** provides a standardized, inter
 ### 🔬 Technical Implementation
 - **Standardized Mock MCP Servers:**
   - `mcp://pvamu-canvas-lms/courses/upcoming-assignments`: Standardized student LMS gradebook and upcoming deadlines.
-  - `mcp://pvamu-dining-services/student/meal-plan-balance`: Standardized student Panther Dining Dollars balance and MSC meal swipes.
+  - `mcp://pvamu-dining-services/student/meal-plan-balance`: Standardized student Meal Swipes (7 per week for MSC, The Zone, Strike Zone Grill) and Panther Bucks balance ($286.50 for Chick-fil-A, Pizza Hut, Dunkin', Panther Wok).
 - **Inspector Trace:** View the exact MCP server URI and JSON resource payload retrieved via the protocol.
 - **UI Feedback:** Renders a blue badge: `🔌 MCP: Connected to PVAMU Canvas LMS Connector`.
 
@@ -102,7 +102,7 @@ Every API request to a stateless LLM begins with zero historical memory. The ass
 **Persistent Context / Long-Term Memory** injects the user's authenticated profile and historical preferences into the prompt pipeline. The assistant recognizes the student immediately and personalizes its guidance.
 
 ### 🔬 Technical Implementation
-- **Profile Record:** `Daniel Sian`, 1st Semester Graduate Student, M.S. in Data Science and Engineering (MS DSE), Roy G. Perry College of Engineering, Advisor: Dr. Lijun Qian (NENR 332), enrolled in *ELEG 6316*, *COMP 5314*, *GNEG 5304*.
+- **Profile Record:** `Daniel Sian`, 1st Semester Graduate Student, M.S. in Data Science and Engineering (MS DSE), Roy G. Perry College of Engineering, Advisor: Dr. Lijun Qian (Electrical Engineering Building), enrolled in *ELEG 6316*, *COMP 5314*, *GNEG 5304*, with 7 weekly Meal Swipes and Panther Bucks.
 - **System Injection:** Automatically injects the profile into the system instruction when enabled.
 - **UI Feedback:** Renders a purple badge: `🧠 Memory: Daniel Sian Profile Injected`.
 
