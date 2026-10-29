@@ -21,10 +21,10 @@ const MODEL_NAME = "gemini-3.6-flash";
 
 // Base Assistant Persona
 const BASE_SYSTEM_INSTRUCTION = 
-  "You are Purple Panther, a friendly, collegiate AI campus assistant at Purple Panther University (PPU). " +
+  "You are Purple Panther, a friendly, collegiate AI campus assistant at Prairie View A&M University (PVAMU). " +
   "Always introduce yourself as Purple Panther. " +
-  "You assist students with questions about campus resources, academic policies, student life, and study tips. " +
-  "Keep your tone collegiate, approachable, and encouraging.";
+  "You assist students, faculty, and visitors with questions about PVAMU academic programs, course catalogs, Fall 2026 semester deadlines, campus dining, and campus life. " +
+  "Keep your tone collegiate, encouraging, and welcoming.";
 
 // Feature Flags State (The Checkbox System)
 const features = {
@@ -287,12 +287,14 @@ function computeSemanticVectorSearch(query) {
     });
 
     // Semantic conceptual booster (mocking dense embeddings)
-    if (/add|drop|deadline|schedule|withdraw|semester|date/i.test(query) && doc.id === "doc-01") score += 0.45;
-    if (/bus|shuttle|ride|route|purple|gold|transit|parking/i.test(query) && doc.id === "doc-02") score += 0.45;
-    if (/food|eat|hungry|grub|dining|meal|late\s*night|midnight|cafe/i.test(query) && doc.id === "doc-03") score += 0.45;
-    if (/money|scholarship|fafsa|aid|grant|work\s*study|tuition/i.test(query) && doc.id === "doc-04") score += 0.45;
-    if (/study|library|room|quiet|3d|laptop|book|reserve/i.test(query) && doc.id === "doc-05") score += 0.45;
-    if (/sick|doctor|mental|therapy|counseling|crisis|health|clinic/i.test(query) && doc.id === "doc-06") score += 0.45;
+    if (/fall|2026|august|september|october|november|december|census|drop|withdraw|add|tuition|labor\s*day|thanksgiving|finals|calendar|deadline/i.test(query) && doc.id === "doc-01") score += 0.45;
+    if (/dse|data\s*science|msdse|graduate|master|lijun|qian|machine\s*learning|ai|eleg\s*6316/i.test(query) && doc.id === "doc-02") score += 0.45;
+    if (/undergraduate|bachelor|cpsc|cpeg|computer\s*science|comp\s*1336|comp\s*2336|data\s*structures/i.test(query) && doc.id === "doc-03") score += 0.45;
+    if (/food|eat|hungry|grub|dining|chick-fil-a|msc|dunkin|pizza\s*hut|strike\s*zone|bowling|meal|late\s*night|coffee|sodexo/i.test(query) && doc.id === "doc-04") score += 0.45;
+    if (/study|library|coleman|room|quiet|laptop|book|reserve/i.test(query) && doc.id === "doc-05") score += 0.45;
+    if (/bus|shuttle|panther\s*express|transit|route|health|clinic|doctor|owens|counseling/i.test(query) && doc.id === "doc-06") score += 0.45;
+    if (/spring|2027|january|february|march|april|may|mlk|spring\s*break|honors\s*convocation|priority\s*registration/i.test(query) && doc.id === "doc-07") score += 0.45;
+    if (/calendar|dates|schedule|registration|census|finals|commencement|deadlines/i.test(query) && (doc.id === "doc-01" || doc.id === "doc-07")) score += 0.30;
 
     // Normalize between 0.15 and 0.98
     const finalScore = Math.min(0.98, Math.max(0.12, score));
@@ -359,16 +361,18 @@ chatForm.addEventListener("submit", async (e) => {
   // 3. MEMORY CONTEXT INJECTION (If enabled)
   let injectedMemoryContext = "";
   if (features.memory) {
+    const p = PPU_MOCK_DATA.mockStudentProfile;
     injectedMemoryContext = 
-      `\n\n[LONG-TERM STUDENT PROFILE MEMORY]\n` +
-      `Student Name: ${PPU_MOCK_DATA.mockStudentProfile.name} (Prefers: ${PPU_MOCK_DATA.mockStudentProfile.preferredName})\n` +
-      `Major: ${PPU_MOCK_DATA.mockStudentProfile.major} (Year: ${PPU_MOCK_DATA.mockStudentProfile.year})\n` +
-      `Cumulative GPA: ${PPU_MOCK_DATA.mockStudentProfile.cumulativeGPA}\n` +
-      `Enrolled Courses: ${PPU_MOCK_DATA.mockStudentProfile.currentSemesterCourses.map(c => `${c.code} (${c.name})`).join(", ")}\n` +
-      `Academic Advisor: ${PPU_MOCK_DATA.mockStudentProfile.academicAdvisor}\n` +
-      `Housing: ${PPU_MOCK_DATA.mockStudentProfile.dormBuilding}\n` +
-      `Dietary Preference: ${PPU_MOCK_DATA.mockStudentProfile.dietaryRestrictions}\n` +
-      `Instruction: Address the student warmly and reference their personal academic profile where relevant.`;
+      `\n\n[LONG-TERM STUDENT PROFILE MEMORY - PVAMU]\n` +
+      `Student Name: ${p.name} (Prefers: ${p.preferredName})\n` +
+      `Degree Program: ${p.degreeProgram} (${p.degreeLevel})\n` +
+      `College & Dept: ${p.college}, ${p.department}\n` +
+      `Current Term: ${p.currentSemester}\n` +
+      `Academic Advisor: ${p.academicAdvisor}\n` +
+      `Enrolled Fall 2026 Courses: ${p.currentSemesterCourses.map(c => `${c.code}: ${c.name} (${c.credits} SCH, Instructor: ${c.instructor})`).join("; ")}\n` +
+      `Housing: ${p.campusHousing}\n` +
+      `Dining Preference: ${p.dietaryPreference}\n` +
+      `Instruction: Address Daniel warmly, acknowledge his graduate program (MS in Data Science and Engineering), and reference his Fall 2026 courses or advisor where relevant.`;
 
     logTraceStep("🧠 Memory Injection", PPU_MOCK_DATA.mockStudentProfile);
   }
@@ -533,7 +537,7 @@ chatForm.addEventListener("submit", async (e) => {
 
     // Render Pipeline Badges on Top of Message
     if (features.memory) {
-      renderPipelineBadge(messageContainer, "badge-memory", "🧠 Memory: Jordan Taylor Profile Injected");
+      renderPipelineBadge(messageContainer, "badge-memory", "🧠 Memory: Daniel Sian (MS DSE) Profile Injected");
     }
     if (features.rag && citedSources.length > 0) {
       renderPipelineBadge(messageContainer, "badge-rag", `📚 RAG: Grounded in ${citedSources[0]}`);
@@ -634,12 +638,12 @@ function detectAndExecuteMockTool(prompt) {
   const lower = prompt.toLowerCase();
 
   // Facility Status tool
-  if (/recreation|gym|fitness|pool|dining\s*hall|library|clinic|makerlab/i.test(lower) && /open|hours|crowd|status|busy/i.test(lower)) {
+  if (/recreation|gym|fitness|msc|dining|chick-fil-a|chick|library|coleman|clinic|health|owens|strike|bowling/i.test(lower) && /open|hours|crowd|status|busy/i.test(lower)) {
     let facility = "recreation_center";
-    if (/dining/i.test(lower)) facility = "dining_hall";
-    if (/library/i.test(lower)) facility = "library";
-    if (/clinic|health/i.test(lower)) facility = "health_clinic";
-    if (/makerlab|3d/i.test(lower)) facility = "makerlab";
+    if (/chick/i.test(lower)) facility = "chick_fil_a";
+    else if (/dining|msc/i.test(lower)) facility = "msc_dining";
+    else if (/library|coleman/i.test(lower)) facility = "library";
+    else if (/clinic|health|owens/i.test(lower)) facility = "health_center";
 
     const tool = PPU_MOCK_DATA.tools.find(t => t.name === "get_facility_status");
     const result = tool.handler({ facility });
@@ -651,13 +655,13 @@ function detectAndExecuteMockTool(prompt) {
   }
 
   // Shuttle ETA tool
-  if (/shuttle|bus|route|purple\s*line|gold\s*line/i.test(lower) && /when|arrive|eta|next|live/i.test(lower)) {
-    const route = lower.includes("gold") ? "gold_line" : "purple_line";
+  if (/shuttle|bus|route|panther\s*express|loop|village/i.test(lower) && /when|arrive|eta|next|live/i.test(lower)) {
+    const route = lower.includes("village") ? "village_express" : "campus_loop";
     const tool = PPU_MOCK_DATA.tools.find(t => t.name === "check_shuttle_live_eta");
-    const result = tool.handler({ route, stop: "Student Union" });
+    const result = tool.handler({ route, stop: "Memorial Student Center (MSC) Hub" });
     return {
       toolName: "check_shuttle_live_eta",
-      args: { route, stop: "Student Union" },
+      args: { route, stop: "Memorial Student Center (MSC) Hub" },
       result
     };
   }
@@ -687,7 +691,7 @@ function queryMockMcpServers(prompt) {
 
   // Canvas LMS MCP Server
   if (/assignment|canvas|due|homework|grade|exam/i.test(lower)) {
-    const server = PPU_MOCK_DATA.mcpServers.find(s => s.name === "mcp://campus-canvas-lms");
+    const server = PPU_MOCK_DATA.mcpServers.find(s => s.name === "mcp://pvamu-canvas-lms");
     if (server) {
       results.push({
         serverTitle: server.serverTitle,
@@ -698,8 +702,8 @@ function queryMockMcpServers(prompt) {
   }
 
   // Dining Balance MCP Server
-  if (/meal\s*plan|dining\s*dollar|balance|food\s*money/i.test(lower)) {
-    const server = PPU_MOCK_DATA.mcpServers.find(s => s.name === "mcp://campus-dining-services");
+  if (/meal\s*plan|dining\s*dollar|balance|food\s*money|panther\s*point/i.test(lower)) {
+    const server = PPU_MOCK_DATA.mcpServers.find(s => s.name === "mcp://pvamu-dining-services");
     if (server) {
       results.push({
         serverTitle: server.serverTitle,
@@ -737,7 +741,7 @@ function calculateEvaluationMetrics(replyText, promptText, latencyMs, isGrounded
 // ============================================================================
 function appendAssistantGreeting() {
   const msg = 
-    "Hello! I am Purple Panther, your campus AI assistant. 🐾\n\n" +
+    "Hello! I am Purple Panther, your campus AI assistant at Prairie View A&M University (PVAMU). 🐾\n\n" +
     "Welcome to the **AI Engineering Workshop**! Right now, you're chatting with a vanilla baseline LLM. " +
     "Head over to the **'Workshop Lab (CYOA)'** tab to turn on cutting-edge capabilities like RAG, Tool Calling, Vector Search, MCP, Memory, and Guardrails!";
   
