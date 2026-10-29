@@ -1,100 +1,100 @@
-# 🐾 Purple Panther - Campus AI Assistant
+# 🐾 Purple Panther - AI Campus Assistant (Workshop Edition)
 
-A beginner-friendly, minimal chatbot application designed for the **AI Engineering Workshop**. Built using vanilla **HTML, CSS, and JavaScript** and powered by the **Google Gemini API**.
+An interactive, vanilla **HTML, CSS, and JavaScript** web application designed for a **30-minute "Choose Your Own Adventure" AI Engineering Workshop**.
 
----
-
-## 🎨 Theme & Personality
-
-- **Name:** Purple Panther
-- **Theme:** Collegiate White, Royal Purple (`#4c1d95`), and Gold (`#f59e0b`)
-- **Role:** Friendly AI campus assistant helping students navigate mock questions about campus resources, academic policy, tutoring, and campus life.
+Powered by Google's **Gemini API** (`gemini-3.6-flash`), this application showcases how to evolve a basic conversational chatbot into a production-grade AI assistant through progressive architectural upgrades.
 
 ---
 
-## 🏗️ Architecture
-
-This is designed to be the simplest chatbot imaginable:
-
-```
-AI-Engineering-Workshop/
-├── index.html       # Single-page UI (Header, chat history container, input form)
-├── style.css        # Responsive styling with White, Purple & Gold theme
-├── app.js           # Vanilla JS: handles chat state, UI updates & Gemini API call
-└── README.md        # Architecture overview and quickstart guide
-```
-
-### How It Works:
-1. **User Input:** The student types a question in the input box and clicks **Send** (or presses `Enter`).
-2. **State & Chat History:** `app.js` maintains an array of conversation turns (`chatHistory`) formatted for multi-turn conversations.
-3. **Gemini REST API:** `app.js` issues a direct `fetch` POST request to Google's Gemini API:
-   ```
-   https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={API_KEY}
-   ```
-4. **Persona (System Instruction):** The assistant is instructed to introduce itself as **Purple Panther** and provide friendly campus guidance.
-5. **UI Rendering:** The assistant's response is appended to the message bubble history with smooth auto-scrolling and a loading indicator.
+## 🎨 Theme & University Setting
+- **Theme:** Collegiate White, Royal Purple (`#4c1d95`), and Gold (`#f59e0b`).
+- **Institution:** Mock university **Purple Panther University (PPU)**.
+- **Personality:** Warm, collegiate, and encouraging campus guide named **Purple Panther**.
 
 ---
 
-## 🚀 How to Run Locally
+## 🚀 How to Run (Zero Dependencies)
 
-Because there are **no complex build steps or mandatory backend services**, running the app on `localhost` takes less than 5 seconds!
+No servers, Python environments, or build steps are required. Simply open **`index.html`** directly in your browser:
 
-### Method 1: Using Python's Built-in Web Server (Recommended)
-Open your terminal in the project directory and run:
+### Option 1: Direct File Open (Easiest)
+- **Mac:** In terminal run:
+  ```bash
+  open index.html
+  ```
+  *Or simply double-click `index.html` in Finder.*
+- **Windows:** Double-click `index.html` or open it with Chrome / Edge.
 
+### Option 2: Local HTTP Server (Optional)
+If you prefer running via a local web server:
 ```bash
 python3 -m http.server 8000
 ```
-
-Then open your browser and navigate to:
-👉 **[http://localhost:8000](http://localhost:8000)**
-
----
-
-### Method 2: Direct File Open
-You can also simply double-click `index.html` or open it directly in Google Chrome / Safari / Firefox:
-```bash
-open index.html
-```
-
----
-
-### Method 3: VS Code Live Server
-If you use VS Code, right-click `index.html` and choose **"Open with Live Server"**.
-
----
-
-### Method 4: Optional 1-File FastAPI Backend
-If you want to run via a Python backend server:
-```bash
-pip install fastapi uvicorn requests
-uvicorn main:app --reload --port 8000
-```
-Then navigate to **[http://localhost:8000](http://localhost:8000)**.
+Then visit: **[http://localhost:8000](http://localhost:8000)**.
 
 ---
 
 ## 🔑 Setting Your Gemini API Key
 
-You can configure your Gemini API key in either of two easy ways:
-
 1. **In the Web UI (Easiest):**
-   - Paste your Gemini API key directly into the input bar in the top right header of the page and click **"Save Key"**. It will be saved in your browser's local storage.
+   - Paste your Gemini API key in the top-right header input and click **"Save"**. It is saved to your browser's `localStorage`.
 2. **In the Code:**
-   - Open [`app.js`](app.js) and paste your key into the `GEMINI_API_KEY` constant at the top:
+   - Open [`app.js`](app.js) and paste your key into:
      ```javascript
-     const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+     const GEMINI_API_KEY = "YOUR_KEY_HERE";
      ```
-
-> 💡 **Get a free Gemini API key:** Visit [Google AI Studio](https://aistudio.google.com/) and click **Get API Key**.
 
 ---
 
-## 🧪 Future Feature Pool
+## 📁 Repository Structure
 
-As the workshop progresses, you can easily build upon this foundation:
-- Connecting to university knowledge bases or FAQ datasets (RAG - Retrieval-Augmented Generation)
-- Adding speech-to-text / text-to-speech for voice interactions
-- Implementing a FastAPI or Node.js proxy backend for enterprise security and rate limiting
-- Adding quick-reply suggestions (e.g., "Where is the library?", "When is the drop deadline?")
+```
+AI-Engineering-Workshop/
+├── index.html       # Single-page UI with Chat, Workshop Lab, and Data Explorer tabs
+├── style.css        # Responsive styling with White, Purple & Gold collegiate theme
+├── app.js           # Vanilla JS: CYOA pipeline controller, Gemini integration & Inspector
+├── mockData.js      # Mock university knowledge base, tools, MCP servers, memory & guardrails
+├── UPGRADES.md      # Detailed reference on all 8 AI engineering upgrades
+├── WORKSHOP_FLOW.md # 30-minute facilitator script & step-by-step order of operations
+└── README.md        # Overview and quickstart guide
+```
+
+---
+
+## 🧭 Workshop Resources
+
+- **[📖 Workshop Facilitator Script & Flow (`WORKSHOP_FLOW.md`)](WORKSHOP_FLOW.md):**
+  The recommended 30-minute chronological agenda. Contains exact prompts to click, audience questions to ask, failure modes to highlight, and what to point out in the Live Inspector.
+
+- **[🛠️ Upgrades & AI Concepts Guide (`UPGRADES.md`)](UPGRADES.md):**
+  Detailed breakdown of all 8 upgrades:
+  1. **RAG (Retrieval-Augmented Generation)**
+  2. **Embeddings & Vector Search**
+  3. **Tool Calling (Function Execution)**
+  4. **MCP (Model Context Protocol)**
+  5. **Structured Output (JSON Mode)**
+  6. **Memory (Student Profile Context)**
+  7. **Guardrails (Safety & Academic Integrity)**
+  8. **Evaluation & Observability**
+
+---
+
+## 🔍 The Live Pipeline Inspector
+
+Click the **🔍 Inspector** button in the header at any time during the presentation to slide out real-time execution traces:
+- Guardrail verification status
+- Injected student memory profile
+- Vector embeddings cosine similarity rankings
+- RAG context chunks injected into prompt
+- Tool execution parameters and returned live JSON
+- MCP server resource payloads
+- Real-time API latency and token estimates
+
+---
+
+## ✏️ Customizing with Real University Data
+
+All mock data is cleanly isolated in **[`mockData.js`](mockData.js)**. To swap in your real university information:
+- Update `PPU_MOCK_DATA.knowledgeBase` with your university's real FAQ chunks.
+- Update `PPU_MOCK_DATA.mockStudentProfile` with relevant student fields.
+- Update `PPU_MOCK_DATA.tools` and `PPU_MOCK_DATA.mcpServers` with actual endpoints or custom mocks!
